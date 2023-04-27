@@ -1,27 +1,33 @@
-#include <Servo.h>
+#include "Motor.h"
 
-Servo motor1;
-Servo motor2;
-Servo motor3;
+Motor motor1;
+Motor motor2;
+Motor motor3;
 
 int buttonPin = 3;
 int ledPin = 11;
 char movement;
 
-void moveContinuousServo(Servo miServo, int velocidad, unsigned long duracionMovimiento) {
-  unsigned long tiempoInicio = millis(); // Inicializar el tiempo de inicio
-
-  while (millis() - tiempoInicio < duracionMovimiento) { // Mover el servo hacia adelante a la velocidad deseada durante la duración especificada
-    miServo.write(90 + velocidad);
-  }
-  miServo.write(90); // Detener el servo después de la duración especificada
+void makeX(Motor motor) {
+  motor3.write(110);
+  delay(500);
+  motor2.add(10);
+  delay(500);
+  motor2.add(-20);
+  delay(500);
+  motor2.add(20);
+  delay(500);
+  motor3.write(120);
+  delay(500);
 }
 
-void makeX(Servo motor) {
-  moveContinuousServo(motor, -15, 600);
-  delay(600);
-  moveContinuousServo(motor, 15, 900);
-  delay(400);
+void resetMotors() {
+  motor1.write(10);
+  delay(500);
+  motor2.write(90);
+  delay(500);
+  motor3.write(-180);
+
 }
 
 void setup() {
@@ -32,10 +38,7 @@ void setup() {
   Serial.begin(9600); 
  }
 
-void resetMotors() {
-  motor1.write(10);
-  motor2.write(90);
-}
+
 
 void loop() {
   resetMotors();
