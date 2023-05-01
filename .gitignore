@@ -1,0 +1,33 @@
+# Ignore automatically generated files
+*.pyc
+*.class
+*.o
+*.a
+
+# Ignore local configuration files
+venv/
+__pycache__/
+.vscode/
+
+# Ignore Arduino build output files
+*.hex
+*.elf
+*.bin
+*.map
+
+# Ignore Arduino log and cache files
+*.log
+*.json
+*.data
+
+# Ignore automatically generated Arduino build files
+build/
+
+# Ignore Arduino local configuration files
+*.local
+
+# Ignore Python backup files
+*~
+*.swp
+*.bak
+*.pyc
